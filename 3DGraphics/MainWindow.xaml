@@ -1,8 +1,12 @@
-﻿<Window x:Class="_3DGraphics.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
     <Grid>
         
     </Grid>
+﻿<Window
+    x:Class="_3DGraphics.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tools="clr-namespace:_3DTools;assembly=3DTools"
+    Title="3D Graphics sample"
+    Height="350" Width="525">
+    
 </Window>

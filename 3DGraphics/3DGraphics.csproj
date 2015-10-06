@@ -77,6 +77,9 @@
     <StartupObject>_3DGraphics.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="3DTools">
+      <HintPath>C:\Program Files (x86)\Wpf3DTools\3DTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
