@@ -5,6 +5,16 @@
     xmlns:tools="clr-namespace:_3DTools;assembly=3DTools"
     Title="3D Graphics sample"
     Height="350" Width="525">
+
+    <Window.Resources>
+        <AmbientLight
+            x:Key="lightAmbient"
+            Color="#404040" />
+        <DirectionalLight
+            x:Key="lightDirectional"
+            Color="White"
+            Direction="-1 -1 -1" />
+    </Window.Resources>
     
     <TabControl>
         <TabItem
@@ -17,19 +27,10 @@
                             LookDirection="-2 -2 -4" />
                     </Viewport3D.Camera>
                     <Viewport3D.Children>
-                        <ModelVisual3D>
-                            <ModelVisual3D.Content>
-                                <DirectionalLight
-                                    Color="White"
-                                    Direction="-1 -1 -1" />
-                            </ModelVisual3D.Content>
-                        </ModelVisual3D>
-                        <ModelVisual3D>
-                            <ModelVisual3D.Content>
-                                <AmbientLight
-                                    Color="#404040" />
-                            </ModelVisual3D.Content>
-                        </ModelVisual3D>
+                        <ModelVisual3D
+                            Content="{StaticResource lightAmbient}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional}" />
                         <ModelVisual3D>
                             <ModelVisual3D.Content>
                                 <GeometryModel3D>
