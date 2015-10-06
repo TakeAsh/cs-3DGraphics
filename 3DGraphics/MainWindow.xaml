@@ -2,7 +2,9 @@
     x:Class="_3DGraphics.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:tools="clr-namespace:_3DTools;assembly=3DTools"
+    xmlns:_3dg="clr-namespace:_3DGraphics"
     Title="3D Graphics sample"
     Height="350" Width="525">
 
@@ -14,6 +16,35 @@
             x:Key="lightDirectional"
             Color="White"
             Direction="-1 -1 -1" />
+        <DirectionalLight
+            x:Key="lightDirectional2"
+            Color="White"
+            Direction="1 0 0" />
+        <!-- <sys:Int32 x:Key="TriangleTexture_Size">16</sys:Int32> -->
+        <ImageBrush
+            x:Key="texture_WRY"
+            ImageSource="{_3dg:TriangleTexture White, Red, Yellow}" />
+        <ImageBrush
+            x:Key="texture_WYG"
+            ImageSource="{_3dg:TriangleTexture White, Yellow, Green}" />
+        <ImageBrush
+            x:Key="texture_WGB"
+            ImageSource="{_3dg:TriangleTexture White, Green, Blue}" />
+        <ImageBrush
+            x:Key="texture_WBR"
+            ImageSource="{_3dg:TriangleTexture White, Blue, Red}" />
+        <ImageBrush
+            x:Key="texture_BkYR"
+            ImageSource="{_3dg:TriangleTexture Black, Yellow, Red}" />
+        <ImageBrush
+            x:Key="texture_BkRB"
+            ImageSource="{_3dg:TriangleTexture Black, Red, Blue}" />
+        <ImageBrush
+            x:Key="texture_BkBG"
+            ImageSource="{_3dg:TriangleTexture Black, Blue, Green}" />
+        <ImageBrush
+            x:Key="texture_BkGY"
+            ImageSource="{_3dg:TriangleTexture Black, Green, Yellow}" />
     </Window.Resources>
     
     <TabControl>
@@ -31,6 +62,8 @@
                             Content="{StaticResource lightAmbient}" />
                         <ModelVisual3D
                             Content="{StaticResource lightDirectional}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional2}" />
                         <ModelVisual3D>
                             <ModelVisual3D.Content>
                                 <GeometryModel3D>
@@ -72,6 +105,170 @@
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial
                                             Brush="Blue" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                    </Viewport3D.Children>
+                </Viewport3D>
+            </tools:TrackballDecorator>
+        </TabItem>
+        <TabItem
+            Header="Texture">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Background="{StaticResource texture_WRY}" />
+                <StackPanel Grid.Row="0" Grid.Column="1" Background="{StaticResource texture_WYG}" />
+                <StackPanel Grid.Row="0" Grid.Column="2" Background="{StaticResource texture_WGB}" />
+                <StackPanel Grid.Row="0" Grid.Column="3" Background="{StaticResource texture_WBR}" />
+                <StackPanel Grid.Row="1" Grid.Column="0" Background="{StaticResource texture_BkYR}" />
+                <StackPanel Grid.Row="1" Grid.Column="1" Background="{StaticResource texture_BkRB}" />
+                <StackPanel Grid.Row="1" Grid.Column="2" Background="{StaticResource texture_BkBG}" />
+                <StackPanel Grid.Row="1" Grid.Column="3" Background="{StaticResource texture_BkGY}" />
+            </Grid>
+        </TabItem>
+        <TabItem
+            Header="Gradient">
+            <tools:TrackballDecorator>
+                <Viewport3D>
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera
+                            Position="200 200 200"
+                            LookDirection="-1 -1 -1"
+                            UpDirection="1,0,0" />
+                    </Viewport3D.Camera>
+                    <Viewport3D.Children>
+                        <ModelVisual3D
+                            Content="{StaticResource lightAmbient}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional2}" />
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="100 0 0, 50 50 0, 50 0 50"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_WRY}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="100 0 0, 50 0 50, 50 -50 0"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_WYG}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="100 0 0, 50 -50 0, 50 0 -50"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_WGB}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="100 0 0, 50 0 -50, 50 50 0"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_WBR}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="0 0 0, 50 0 50, 50 50 0"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_BkYR}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="0 0 0, 50 50 0, 50 0 -50"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_BkRB}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="0 0 0, 50 0 -50, 50 -50 0"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_BkBG}" />
+                                    </GeometryModel3D.Material>
+                                </GeometryModel3D>
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D>
+                                    <GeometryModel3D.Geometry>
+                                        <MeshGeometry3D
+                                            Positions="0 0 0, 50 -50 0, 50 0 50"
+                                            TriangleIndices="0 1 2"
+                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                    </GeometryModel3D.Geometry>
+                                    <GeometryModel3D.Material>
+                                        <DiffuseMaterial Brush="{StaticResource texture_BkGY}" />
                                     </GeometryModel3D.Material>
                                 </GeometryModel3D>
                             </ModelVisual3D.Content>
