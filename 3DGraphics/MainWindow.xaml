@@ -1,6 +1,3 @@
-    <Grid>
-        
-    </Grid>
 ﻿<Window
     x:Class="_3DGraphics.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,4 +6,6 @@
     Title="3D Graphics sample"
     Height="350" Width="525">
     
+    <TabControl>
+    </TabControl>
 </Window>
