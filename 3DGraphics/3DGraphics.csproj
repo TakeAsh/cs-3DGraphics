@@ -99,9 +99,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ColorExtensionMethods.cs" />
-    <Compile Include="IServiceProviderExtensionMethods.cs" />
-    <Compile Include="TriangleTexture.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -160,6 +157,12 @@
       <ProductName>Windows インストーラー 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaHelper\MediaHelper.csproj">
+      <Project>{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}</Project>
+      <Name>MediaHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

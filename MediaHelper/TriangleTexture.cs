@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xaml;
 
-namespace _3DGraphics {
+namespace MediaHelper {
 
     public static class TriangleTexture {
 
