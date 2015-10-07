@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3DGraphics", "3DGraphics\3DGraphics.csproj", "{C61CDE8A-D584-42FA-8207-680B0F7F6F59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHelper", "MediaHelper\MediaHelper.csproj", "{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -19,6 +21,14 @@ Global
 		{C61CDE8A-D584-42FA-8207-680B0F7F6F59}.Release|x64.Build.0 = Release|x64
 		{C61CDE8A-D584-42FA-8207-680B0F7F6F59}.Release|x86.ActiveCfg = Release|x86
 		{C61CDE8A-D584-42FA-8207-680B0F7F6F59}.Release|x86.Build.0 = Release|x86
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Debug|x64.ActiveCfg = Debug|x64
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Debug|x64.Build.0 = Debug|x64
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Debug|x86.ActiveCfg = Debug|x86
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Debug|x86.Build.0 = Debug|x86
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Release|x64.ActiveCfg = Release|x64
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Release|x64.Build.0 = Release|x64
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Release|x86.ActiveCfg = Release|x86
+		{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
