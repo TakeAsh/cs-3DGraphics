@@ -169,7 +169,7 @@
                                         <MeshGeometry3D
                                             Positions="100 0 0, 50 50 0, 50 0 50"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_WRY}" />
@@ -184,7 +184,7 @@
                                         <MeshGeometry3D
                                             Positions="100 0 0, 50 0 50, 50 -50 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_WYG}" />
@@ -199,7 +199,7 @@
                                         <MeshGeometry3D
                                             Positions="100 0 0, 50 -50 0, 50 0 -50"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_WGB}" />
@@ -214,7 +214,7 @@
                                         <MeshGeometry3D
                                             Positions="100 0 0, 50 0 -50, 50 50 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_WBR}" />
@@ -229,7 +229,7 @@
                                         <MeshGeometry3D
                                             Positions="0 0 0, 50 0 50, 50 50 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_BkYR}" />
@@ -244,7 +244,7 @@
                                         <MeshGeometry3D
                                             Positions="0 0 0, 50 50 0, 50 0 -50"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_BkRB}" />
@@ -259,7 +259,7 @@
                                         <MeshGeometry3D
                                             Positions="0 0 0, 50 0 -50, 50 -50 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_BkBG}" />
@@ -274,7 +274,7 @@
                                         <MeshGeometry3D
                                             Positions="0 0 0, 50 -50 0, 50 0 50"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_BkGY}" />
@@ -308,7 +308,7 @@
                                         <MeshGeometry3D
                                             Positions="173 0 0, 0 100 0, 0 -100 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_RGB}" />
@@ -323,7 +323,7 @@
                                         <MeshGeometry3D
                                             Positions="0 300 0, 0 100 0, 173 200 0"
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_GBR}" />
@@ -338,7 +338,7 @@
                                         <MeshGeometry3D
                                             Positions="0 -300 0, 173 -200 0, 0 -100 0 "
                                             TriangleIndices="0 1 2"
-                                            TextureCoordinates="0 0, 1 0, 0 1" />
+                                            TextureCoordinates="0 0, 0 1, 1 0" />
                                     </GeometryModel3D.Geometry>
                                     <GeometryModel3D.Material>
                                         <DiffuseMaterial Brush="{StaticResource texture_BRG}" />
