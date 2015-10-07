@@ -13,6 +13,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using _3DTools;
+using MediaHelper;
 
 namespace _3DGraphics {
     /// <summary>

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:tools="clr-namespace:_3DTools;assembly=3DTools"
-    xmlns:_3dg="clr-namespace:_3DGraphics"
+    xmlns:mh="clr-namespace:MediaHelper;assembly=MediaHelper"
     Title="3D Graphics sample"
     Height="350" Width="525">
 
@@ -23,37 +23,37 @@
         <!-- <sys:Int32 x:Key="TriangleTexture_Size">16</sys:Int32> -->
         <ImageBrush
             x:Key="texture_WRY"
-            ImageSource="{_3dg:TriangleTexture White, Red, Yellow}" />
+            ImageSource="{mh:TriangleTexture White, Red, Yellow}" />
         <ImageBrush
             x:Key="texture_WYG"
-            ImageSource="{_3dg:TriangleTexture White, Yellow, Green}" />
+            ImageSource="{mh:TriangleTexture White, Yellow, Green}" />
         <ImageBrush
             x:Key="texture_WGB"
-            ImageSource="{_3dg:TriangleTexture White, Green, Blue}" />
+            ImageSource="{mh:TriangleTexture White, Green, Blue}" />
         <ImageBrush
             x:Key="texture_WBR"
-            ImageSource="{_3dg:TriangleTexture White, Blue, Red}" />
+            ImageSource="{mh:TriangleTexture White, Blue, Red}" />
         <ImageBrush
             x:Key="texture_BkYR"
-            ImageSource="{_3dg:TriangleTexture Black, Yellow, Red}" />
+            ImageSource="{mh:TriangleTexture Black, Yellow, Red}" />
         <ImageBrush
             x:Key="texture_BkRB"
-            ImageSource="{_3dg:TriangleTexture Black, Red, Blue}" />
+            ImageSource="{mh:TriangleTexture Black, Red, Blue}" />
         <ImageBrush
             x:Key="texture_BkBG"
-            ImageSource="{_3dg:TriangleTexture Black, Blue, Green}" />
+            ImageSource="{mh:TriangleTexture Black, Blue, Green}" />
         <ImageBrush
             x:Key="texture_BkGY"
-            ImageSource="{_3dg:TriangleTexture Black, Green, Yellow}" />
+            ImageSource="{mh:TriangleTexture Black, Green, Yellow}" />
         <ImageBrush
             x:Key="texture_RGB"
-            ImageSource="{_3dg:TriangleTexture Red, Green, Blue}" />
+            ImageSource="{mh:TriangleTexture Red, Green, Blue}" />
         <ImageBrush
             x:Key="texture_GBR"
-            ImageSource="{_3dg:TriangleTexture Green, Blue, Red}" />
+            ImageSource="{mh:TriangleTexture Green, Blue, Red}" />
         <ImageBrush
             x:Key="texture_BRG"
-            ImageSource="{_3dg:TriangleTexture Blue, Red, Green}" />
+            ImageSource="{mh:TriangleTexture Blue, Red, Green}" />
     </Window.Resources>
     
     <TabControl>
