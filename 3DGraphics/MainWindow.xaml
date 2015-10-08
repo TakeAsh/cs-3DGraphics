@@ -393,5 +393,27 @@
                 </Viewport3D>
             </tools:TrackballDecorator>
         </TabItem>
+        <TabItem
+            Header="Points">
+            <tools:TrackballDecorator>
+                <Viewport3D
+                    x:Name="viewport_Points">
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera
+                            Position="200 200 200"
+                            LookDirection="-1 -1 -1"
+                            UpDirection="1,0,0" />
+                    </Viewport3D.Camera>
+                    <Viewport3D.Children>
+                        <ModelVisual3D
+                            Content="{StaticResource lightAmbient}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional}" />
+                        <ModelVisual3D
+                            Content="{StaticResource lightDirectional2}" />
+                    </Viewport3D.Children>
+                </Viewport3D>
+            </tools:TrackballDecorator>
+        </TabItem>
     </TabControl>
 </Window>

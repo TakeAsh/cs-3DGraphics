@@ -26,6 +26,9 @@ namespace _3DGraphics {
         public const double AxisTick = 20;
         public const double TickThickness = 1;
         public const double LabelSize = 10;
+        public const double OctaHedronRadius = 1;
+        public const int DivYZ = 24;
+        public const int NumOfPoints = 24 * DivYZ;
 
         private static readonly Int32Collection _triangleIndices = new Int32Collection() {
             0, 1, 2,
@@ -39,10 +42,38 @@ namespace _3DGraphics {
             new Point(1, 0),
         };
 
+        private static readonly List<int> _octahedronIndices = new List<int>(){
+            0, 1, 2,
+            0, 2, 3,
+            0, 3, 4,
+            0, 4, 1,
+            5, 2, 1,
+            5, 1, 4,
+            5, 4, 3,
+            5, 3, 2,
+        };
+
+        private static readonly List<Point3D> _sphericalPoints =
+            new List<Point3D>(Enumerable
+                .Range(0, NumOfPoints)
+                .Select(t => {
+                    var rYZ = Math.Sin(Math.PI * t / NumOfPoints) * 50;
+                    return new Point3D(
+                        Math.Cos(Math.PI * t / NumOfPoints) * 50 + 50,
+                        rYZ * Math.Cos(Math.PI * 2 * (t % DivYZ) / DivYZ),
+                        rYZ * Math.Sin(Math.PI * 2 * (t % DivYZ) / DivYZ)
+                    );
+                }));
+
         public MainWindow() {
             InitializeComponent();
+            
             AddAxes(viewport_Gradient);
             AddTicks(viewport_Gradient);
+
+            AddPoints(viewport_Points, _sphericalPoints);
+            AddAxes(viewport_Points);
+            AddTicks(viewport_Points);
         }
 
         private void AddAxes(Viewport3D viewport3D) {
@@ -156,6 +187,35 @@ namespace _3DGraphics {
                 });
         }
 
+        private void AddPoints(Viewport3D viewport3D, List<Point3D> points) {
+            var points2 = new Point3DCollection();
+            var indicies2 = new Int32Collection();
+            var index = 0;
+            points.ForEach(point => {
+                new List<Point3D>() {
+                    new Point3D(point.X + OctaHedronRadius, point.Y, point.Z),
+                    new Point3D(point.X, point.Y + OctaHedronRadius, point.Z),
+                    new Point3D(point.X, point.Y, point.Z + OctaHedronRadius),
+                    new Point3D(point.X, point.Y - OctaHedronRadius, point.Z),
+                    new Point3D(point.X, point.Y, point.Z - OctaHedronRadius),
+                    new Point3D(point.X - OctaHedronRadius, point.Y, point.Z),
+                }.ForEach(point2 => points2.Add(point2));
+                _octahedronIndices.ForEach(pos => indicies2.Add(pos + index * 6));
+                ++index;
+            });
+            viewport3D.Children.Add(new ModelVisual3D() {
+                Content = new GeometryModel3D() {
+                    Geometry = new MeshGeometry3D() {
+                        Positions = points2,
+                        TriangleIndices = indicies2,
+                    },
+                    Material = new DiffuseMaterial(Brushes.Red),
+                },
+            });
+        }
+
+        #region Event Handlers
+
         private void button_XpYpZp_Click(object sender, RoutedEventArgs e) {
             viewport_Gradient.Camera = new PerspectiveCamera() {
                 Position = new Point3D(200, 200, 200),
@@ -219,5 +279,7 @@ namespace _3DGraphics {
                 UpDirection = new Vector3D(1, 0, 0),
             };
         }
+
+        #endregion
     }
 }
