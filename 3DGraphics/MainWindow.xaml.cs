@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,9 @@ using _3DTools;
 using MediaHelper;
 
 namespace _3DGraphics {
+
+    using _resources = Properties.Resources;
+
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
@@ -27,8 +31,8 @@ namespace _3DGraphics {
         public const double TickThickness = 1;
         public const double LabelSize = 10;
         public const double OctaHedronRadius = 1;
-        public const int DivYZ = 24;
-        public const int NumOfPoints = 24 * DivYZ;
+        public const int DivYZ = 48;
+        public const int NumOfPoints = 48 * DivYZ;
 
         private static readonly Int32Collection _triangleIndices = new Int32Collection() {
             0, 1, 2,
@@ -65,13 +69,49 @@ namespace _3DGraphics {
                     );
                 }));
 
+        private static readonly Regex _regVertex = new Regex(@"^Vertex\s+\d+\s+(?<x>[-0-9\.]+)\s+(?<y>[-0-9\.]+)\s+(?<z>[-0-9\.]+)");
+        private static readonly Regex _regFace = new Regex(@"^Face\s+\d+\s+(?<p0>[0-9]+)\s+(?<p1>[0-9]+)\s+(?<p2>[0-9]+)");
+
+        struct PN {
+            public double PX;
+            public double PY;
+            public double PZ;
+            public double NX;
+            public double NY;
+            public double NZ;
+
+            public PN(double px,double py,double pz)
+                : this() {
+
+                    PX = px;
+                    PY = py;
+                    PZ = pz;
+                    NX = px - 50;
+                    NY = py;
+                    NZ = pz;
+            }
+
+            public override string ToString() {
+                return String.Join(" ", new[]{
+                    PX.ToString("0.000"),
+                    PY.ToString("0.000"),
+                    PZ.ToString("0.000"),
+                    NX.ToString("0.000"),
+                    NY.ToString("0.000"),
+                    NZ.ToString("0.000"),
+                });
+            }
+        }
+
         public MainWindow() {
             InitializeComponent();
             
             AddAxes(viewport_Gradient);
             AddTicks(viewport_Gradient);
 
-            AddPoints(viewport_Points, _sphericalPoints);
+            //AddPoints(viewport_Points, _sphericalPoints);
+            var pns = String.Join("\n", _sphericalPoints.Select(point => new PN(point.X, point.Y, point.Z)));
+            AddMesh(viewport_Points);
             AddAxes(viewport_Points);
             AddTicks(viewport_Points);
         }
@@ -208,6 +248,41 @@ namespace _3DGraphics {
                     Geometry = new MeshGeometry3D() {
                         Positions = points2,
                         TriangleIndices = indicies2,
+                    },
+                    Material = new DiffuseMaterial(Brushes.Red),
+                },
+            });
+        }
+
+        private void AddMesh(Viewport3D viewport3D) {
+            var mesh = _resources.Mesh01;
+            var points = new Point3DCollection();
+            var indicies = new Int32Collection();
+            mesh.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                .ToList()
+                .ForEach(line => {
+                    MatchCollection mc;
+                    if (line[0] == '#') {
+                        return;
+                    } else if ((mc = _regVertex.Matches(line)).Count > 0) {
+                        points.Add(new Point3D(
+                            Convert.ToDouble(mc[0].Groups["x"].Value),
+                            Convert.ToDouble(mc[0].Groups["y"].Value),
+                            Convert.ToDouble(mc[0].Groups["z"].Value)
+                        ));
+                    } else if ((mc = _regFace.Matches(line)).Count > 0) {
+                        new List<int>(){
+                            Convert.ToInt32(mc[0].Groups["p0"].Value) - 1,
+                            Convert.ToInt32(mc[0].Groups["p1"].Value) - 1,
+                            Convert.ToInt32(mc[0].Groups["p2"].Value) - 1
+                        }.ForEach(point => indicies.Add(point));
+                    }
+                });
+            viewport3D.Children.Add(new ModelVisual3D() {
+                Content = new GeometryModel3D() {
+                    Geometry = new MeshGeometry3D() {
+                        Positions = points,
+                        TriangleIndices = indicies,
                     },
                     Material = new DiffuseMaterial(Brushes.Red),
                 },
