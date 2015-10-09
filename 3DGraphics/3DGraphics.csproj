@@ -167,10 +167,6 @@
       <Project>{2F2D7E12-1121-4E38-AEF9-3E0BD51DA099}</Project>
       <Name>WpfUtility</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MediaHelper\MediaHelper.csproj">
-      <Project>{9DF24957-7ED5-4B24-A8EC-7B32A78C447C}</Project>
-      <Name>MediaHelper</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Mesh01.txt" />
