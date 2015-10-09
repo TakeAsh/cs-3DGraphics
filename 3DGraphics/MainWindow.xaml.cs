@@ -14,7 +14,8 @@ using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using _3DTools;
-using MediaHelper;
+using TakeAshUtility;
+using WpfUtility;
 
 namespace _3DGraphics {
 
