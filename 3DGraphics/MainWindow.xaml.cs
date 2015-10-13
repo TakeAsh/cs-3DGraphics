@@ -292,68 +292,69 @@ namespace _3DGraphics {
 
         #region Event Handlers
 
-        private void button_XpYpZp_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(200, 200, 200),
-                LookDirection = new Vector3D(-1, -1, -1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XpYmZp_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(200, -200, 200),
-                LookDirection = new Vector3D(-1, 1, -1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XpYmZm_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(200, -200, -200),
-                LookDirection = new Vector3D(-1, 1, 1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XpYpZm_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(200, 200, -200),
-                LookDirection = new Vector3D(-1, -1, 1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XmYpZp_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(-200, 200, 200),
-                LookDirection = new Vector3D(1, -1, -1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XmYmZp_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(-200, -200, 200),
-                LookDirection = new Vector3D(1, 1, -1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XmYmZm_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(-200, -200, -200),
-                LookDirection = new Vector3D(1, 1, 1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
-        }
-
-        private void button_XmYpZm_Click(object sender, RoutedEventArgs e) {
-            viewport_Gradient.Camera = new PerspectiveCamera() {
-                Position = new Point3D(-200, 200, -200),
-                LookDirection = new Vector3D(1, -1, 1),
-                UpDirection = new Vector3D(1, 0, 0),
-            };
+        private void button_Camera_Click(object sender, RoutedEventArgs e) {
+            var button = sender as Button;
+            var name = button.Name.Substring(button.Name.LastIndexOf('_') + 1);
+            PerspectiveCamera camera = null;
+            switch (name) {
+                case "XpYpZp":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(200, 200, 200),
+                        LookDirection = new Vector3D(-1, -1, -1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XpYmZp":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(200, -200, 200),
+                        LookDirection = new Vector3D(-1, 1, -1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XpYmZm":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(200, -200, -200),
+                        LookDirection = new Vector3D(-1, 1, 1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XpYpZm":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(200, 200, -200),
+                        LookDirection = new Vector3D(-1, -1, 1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XmYpZp":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(-200, 200, 200),
+                        LookDirection = new Vector3D(1, -1, -1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XmYmZp":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(-200, -200, 200),
+                        LookDirection = new Vector3D(1, 1, -1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XmYmZm":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(-200, -200, -200),
+                        LookDirection = new Vector3D(1, 1, 1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+                case "XmYpZm":
+                    camera = new PerspectiveCamera() {
+                        Position = new Point3D(-200, 200, -200),
+                        LookDirection = new Vector3D(1, -1, 1),
+                        UpDirection = new Vector3D(1, 0, 0),
+                    };
+                    break;
+            }
+            viewport_Gradient.Camera = camera;
         }
 
         #endregion

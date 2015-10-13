@@ -155,37 +155,37 @@
                     <StackPanel
                         Orientation="Vertical">
                         <Button
-                            x:Name="button_XpYpZp"
+                            x:Name="button_Gradient_XpYpZp"
                             Content="+X +Y +Z"
-                            Click="button_XpYpZp_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XpYmZp"
+                            x:Name="button_Gradient_XpYmZp"
                             Content="+X -Y +Z"
-                            Click="button_XpYmZp_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XpYmZm"
+                            x:Name="button_Gradient_XpYmZm"
                             Content="+X -Y -Z"
-                            Click="button_XpYmZm_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XpYpZm"
+                            x:Name="button_Gradient_XpYpZm"
                             Content="+X +Y -Z"
-                            Click="button_XpYpZm_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XmYpZp"
+                            x:Name="button_Gradient_XmYpZp"
                             Content="-X +Y +Z"
-                            Click="button_XmYpZp_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XmYmZp"
+                            x:Name="button_Gradient_XmYmZp"
                             Content="-X -Y +Z"
-                            Click="button_XmYmZp_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XmYmZm"
+                            x:Name="button_Gradient_XmYmZm"
                             Content="-X -Y -Z"
-                            Click="button_XmYmZm_Click" />
+                            Click="button_Camera_Click" />
                         <Button
-                            x:Name="button_XmYpZm"
+                            x:Name="button_Gradient_XmYpZm"
                             Content="-X +Y -Z"
-                            Click="button_XmYpZm_Click" />
+                            Click="button_Camera_Click" />
                     </StackPanel>
                 </GroupBox>
                 <tools:TrackballDecorator>
