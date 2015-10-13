@@ -6,6 +6,6 @@
     StartupUri="MainWindow.xaml">
 
     <Application.Resources>
-        <!-- <sys:Int32 x:Key="TriangleTexture_Size">4</sys:Int32> -->
+        <!-- <sys:Int32 x:Key="TriangleGradientTexture_Size">4</sys:Int32> -->
     </Application.Resources>
 </Application>

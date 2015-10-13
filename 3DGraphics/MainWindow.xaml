@@ -20,40 +20,40 @@
             x:Key="lightDirectional2"
             Color="White"
             Direction="1 0 0" />
-        <!-- <sys:Int32 x:Key="TriangleTexture_Size">16</sys:Int32> -->
+        <!-- <sys:Int32 x:Key="TriangleGradientTexture_Size">16</sys:Int32> -->
         <ImageBrush
             x:Key="texture_WRY"
-            ImageSource="{wu:TriangleTexture White, Red, Yellow}" />
+            ImageSource="{wu:TriangleGradientTexture White, Red, Yellow}" />
         <ImageBrush
             x:Key="texture_WYG"
-            ImageSource="{wu:TriangleTexture White, Yellow, Green}" />
+            ImageSource="{wu:TriangleGradientTexture White, Yellow, Green}" />
         <ImageBrush
             x:Key="texture_WGB"
-            ImageSource="{wu:TriangleTexture White, Green, Blue}" />
+            ImageSource="{wu:TriangleGradientTexture White, Green, Blue}" />
         <ImageBrush
             x:Key="texture_WBR"
-            ImageSource="{wu:TriangleTexture White, Blue, Red}" />
+            ImageSource="{wu:TriangleGradientTexture White, Blue, Red}" />
         <ImageBrush
             x:Key="texture_BkYR"
-            ImageSource="{wu:TriangleTexture Black, Yellow, Red}" />
+            ImageSource="{wu:TriangleGradientTexture Black, Yellow, Red}" />
         <ImageBrush
             x:Key="texture_BkRB"
-            ImageSource="{wu:TriangleTexture Black, Red, Blue}" />
+            ImageSource="{wu:TriangleGradientTexture Black, Red, Blue}" />
         <ImageBrush
             x:Key="texture_BkBG"
-            ImageSource="{wu:TriangleTexture Black, Blue, Green}" />
+            ImageSource="{wu:TriangleGradientTexture Black, Blue, Green}" />
         <ImageBrush
             x:Key="texture_BkGY"
-            ImageSource="{wu:TriangleTexture Black, Green, Yellow}" />
+            ImageSource="{wu:TriangleGradientTexture Black, Green, Yellow}" />
         <ImageBrush
             x:Key="texture_RGB"
-            ImageSource="{wu:TriangleTexture Red, Green, Blue}" />
+            ImageSource="{wu:TriangleGradientTexture Red, Green, Blue}" />
         <ImageBrush
             x:Key="texture_GBR"
-            ImageSource="{wu:TriangleTexture Green, Blue, Red}" />
+            ImageSource="{wu:TriangleGradientTexture Green, Blue, Red}" />
         <ImageBrush
             x:Key="texture_BRG"
-            ImageSource="{wu:TriangleTexture Blue, Red, Green}" />
+            ImageSource="{wu:TriangleGradientTexture Blue, Red, Green}" />
     </Window.Resources>
     
     <TabControl>
@@ -123,7 +123,7 @@
             </tools:TrackballDecorator>
         </TabItem>
         <TabItem
-            Header="Texture">
+            Header="Gradient Texture">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
