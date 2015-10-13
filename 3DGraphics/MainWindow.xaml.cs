@@ -115,6 +115,9 @@ namespace _3DGraphics {
             AddMesh(viewport_Points);
             AddAxes(viewport_Points);
             AddTicks(viewport_Points);
+
+            AddAxes(viewport_Frame);
+            AddTicks(viewport_Frame);
         }
 
         private void AddAxes(Viewport3D viewport3D) {
@@ -355,6 +358,7 @@ namespace _3DGraphics {
                     break;
             }
             viewport_Gradient.Camera = camera;
+            viewport_Frame.Camera = camera;
         }
 
         #endregion
