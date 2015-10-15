@@ -32,8 +32,8 @@ namespace _3DGraphics {
         public const double TickThickness = 1;
         public const double LabelSize = 10;
         public const double OctaHedronRadius = 1;
-        public const int DivYZ = 48;
-        public const int NumOfPoints = 48 * DivYZ;
+        public const int DivYZ = 24;
+        public const int NumOfPoints = 24 * DivYZ;
 
         private static readonly Int32Collection _triangleIndices = new Int32Collection() {
             0, 1, 2,
@@ -115,7 +115,7 @@ namespace _3DGraphics {
             viewport_Points.Children.Add(new CrossLines3D() {
                 Points = _sphericalPoints,
                 Color = Colors.Lime,
-                Thickness = 2,
+                Thickness = 3,
             });
             AddMesh(viewport_Points);
             AddAxes(viewport_Points);
@@ -293,7 +293,7 @@ namespace _3DGraphics {
                         Positions = points,
                         TriangleIndices = indicies,
                     },
-                    Material = new DiffuseMaterial(Brushes.Red),
+                    Material = new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0x7f, 0xff, 0x00, 0x00))),
                 },
             });
         }
