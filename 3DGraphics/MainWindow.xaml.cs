@@ -112,6 +112,11 @@ namespace _3DGraphics {
 
             //AddPoints(viewport_Points, _sphericalPoints);
             var pns = String.Join("\n", _sphericalPoints.Select(point => new PN(point.X, point.Y, point.Z)));
+            viewport_Points.Children.Add(new CrossLines3D() {
+                Points = _sphericalPoints,
+                Color = Colors.Lime,
+                Thickness = 2,
+            });
             AddMesh(viewport_Points);
             AddAxes(viewport_Points);
             AddTicks(viewport_Points);
