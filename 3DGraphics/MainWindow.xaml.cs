@@ -26,9 +26,11 @@ namespace _3DGraphics {
     public partial class MainWindow : Window {
 
         public const double AxisRange = 120;
-        public const double AxisThickness = 3;
+        public const double AxisThickness = 1;
+        public static readonly Color AxisColor = Colors.Gray;
         public const double AxisTick = 20;
-        public const double TickThickness = 1;
+        public const double TickThickness = 0.5;
+        public static readonly Color TickColor = Colors.Cyan;
         public const double LabelSize = 10;
         public const double OctaHedronRadius = 1;
         public const int DivYZ = 24;
@@ -189,7 +191,7 @@ namespace _3DGraphics {
         private CrossLines3D MakeAxis(IEnumerable<Point3D> points) {
             return new CrossLines3D() {
                 Points = points,
-                Color = Colors.Gray,
+                Color = AxisColor,
                 Thickness = AxisThickness,
             };
         }
@@ -210,8 +212,8 @@ namespace _3DGraphics {
         }
 
         private void AddTicks(Viewport3D viewport3D) {
-            Enumerable.Range(1, (int)(AxisRange * 2 / AxisTick) - 1)
-                .Select(i => i * AxisTick - AxisRange)
+            Enumerable.Range(1, (int)(AxisRange / AxisTick) - 1)
+                .Select(i => i * AxisTick)
                 .ToList()
                 .ForEach(t => {
                     new List<Visual3D>() {
@@ -220,7 +222,15 @@ namespace _3DGraphics {
                                 new Point3D(0, t, -AxisRange),
                                 new Point3D(0, t, AxisRange),
                             },
-                            Color = Colors.LightGray,
+                            Color = TickColor,
+                            Thickness = TickThickness,
+                        },
+                        new CrossLines3D() {
+                            Points = new[] {
+                                new Point3D(0, -t, -AxisRange),
+                                new Point3D(0, -t, AxisRange),
+                            },
+                            Color = TickColor,
                             Thickness = TickThickness,
                         },
                         new CrossLines3D() {
@@ -228,7 +238,15 @@ namespace _3DGraphics {
                                 new Point3D(0, -AxisRange, t),
                                 new Point3D(0, AxisRange, t),
                             },
-                            Color = Colors.LightGray,
+                            Color = TickColor,
+                            Thickness = TickThickness,
+                        },
+                        new CrossLines3D() {
+                            Points = new[] {
+                                new Point3D(0, -AxisRange, -t),
+                                new Point3D(0, AxisRange, -t),
+                            },
+                            Color = TickColor,
                             Thickness = TickThickness,
                         },
                     }.ForEach(item => viewport3D.Children.Add(item));
