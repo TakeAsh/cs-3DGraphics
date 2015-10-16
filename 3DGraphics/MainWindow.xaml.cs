@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using _3DTools;
 using TakeAshUtility;
 using WpfUtility;
 
@@ -187,9 +186,9 @@ namespace _3DGraphics {
             }.ForEach(item => viewport3D.Children.Add(item));
         }
 
-        private ScreenSpaceLines3D MakeAxis(IEnumerable<Point3D> points) {
-            return new ScreenSpaceLines3D() {
-                Points = new Point3DCollection(points),
+        private CrossLines3D MakeAxis(IEnumerable<Point3D> points) {
+            return new CrossLines3D() {
+                Points = points,
                 Color = Colors.Gray,
                 Thickness = AxisThickness,
             };
@@ -216,16 +215,16 @@ namespace _3DGraphics {
                 .ToList()
                 .ForEach(t => {
                     new List<Visual3D>() {
-                        new ScreenSpaceLines3D() {
-                            Points = new Point3DCollection(){
+                        new CrossLines3D() {
+                            Points = new[] {
                                 new Point3D(0, t, -AxisRange),
                                 new Point3D(0, t, AxisRange),
                             },
                             Color = Colors.LightGray,
                             Thickness = TickThickness,
                         },
-                        new ScreenSpaceLines3D() {
-                            Points = new Point3DCollection(){
+                        new CrossLines3D() {
+                            Points = new[] {
                                 new Point3D(0, -AxisRange, t),
                                 new Point3D(0, AxisRange, t),
                             },
