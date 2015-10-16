@@ -25,7 +25,7 @@ namespace _3DGraphics {
     /// </summary>
     public partial class MainWindow : Window {
 
-        public const double AxisRange = 120;
+        public const double AxisRange = 125;
         public const double AxisThickness = 1;
         public static readonly Color AxisColor = Colors.Gray;
         public const double AxisTick = 20;
@@ -212,7 +212,7 @@ namespace _3DGraphics {
         }
 
         private void AddTicks(Viewport3D viewport3D) {
-            Enumerable.Range(1, (int)(AxisRange / AxisTick) - 1)
+            Enumerable.Range(1, (int)(AxisRange / AxisTick))
                 .Select(i => i * AxisTick)
                 .ToList()
                 .ForEach(t => {
