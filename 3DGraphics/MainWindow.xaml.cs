@@ -217,40 +217,32 @@ namespace _3DGraphics {
                 .ToList()
                 .ForEach(t => {
                     new List<Visual3D>() {
-                        new CrossLines3D() {
-                            Points = new[] {
-                                new Point3D(0, t, -AxisRange),
-                                new Point3D(0, t, AxisRange),
-                            },
-                            Color = TickColor,
-                            Thickness = TickThickness,
-                        },
-                        new CrossLines3D() {
-                            Points = new[] {
-                                new Point3D(0, -t, -AxisRange),
-                                new Point3D(0, -t, AxisRange),
-                            },
-                            Color = TickColor,
-                            Thickness = TickThickness,
-                        },
-                        new CrossLines3D() {
-                            Points = new[] {
-                                new Point3D(0, -AxisRange, t),
-                                new Point3D(0, AxisRange, t),
-                            },
-                            Color = TickColor,
-                            Thickness = TickThickness,
-                        },
-                        new CrossLines3D() {
-                            Points = new[] {
-                                new Point3D(0, -AxisRange, -t),
-                                new Point3D(0, AxisRange, -t),
-                            },
-                            Color = TickColor,
-                            Thickness = TickThickness,
-                        },
+                        MakeTick(new[] {
+                            new Point3D(0, t, -AxisRange),
+                            new Point3D(0, t, AxisRange),
+                        }),
+                        MakeTick(new[] {
+                            new Point3D(0, -t, -AxisRange),
+                            new Point3D(0, -t, AxisRange),
+                        }),
+                        MakeTick(new[] {
+                            new Point3D(0, -AxisRange, t),
+                            new Point3D(0, AxisRange, t),
+                        }),
+                        MakeTick(new[] {
+                            new Point3D(0, -AxisRange, -t),
+                            new Point3D(0, AxisRange, -t),
+                        }),
                     }.ForEach(item => viewport3D.Children.Add(item));
                 });
+        }
+
+        private CrossLines3D MakeTick(IEnumerable<Point3D> points) {
+            return new CrossLines3D() {
+                Points = points,
+                Color = TickColor,
+                Thickness = TickThickness,
+            };
         }
 
         private void AddPoints(Viewport3D viewport3D, List<Point3D> points) {
