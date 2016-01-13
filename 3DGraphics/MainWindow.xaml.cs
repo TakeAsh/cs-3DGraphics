@@ -111,7 +111,7 @@ namespace _3DGraphics {
             AddAxes(viewport_Gradient);
             AddTicks(viewport_Gradient);
 
-            //AddPoints(viewport_Points, _sphericalPoints);
+            AddPoints(viewport_Points, _sphericalPoints);
             var pns = String.Join("\n", _sphericalPoints.Select(point => new PN(point.X, point.Y, point.Z)));
             viewport_Points.Children.Add(new CrossLines3D() {
                 Points = _sphericalPoints,
@@ -246,29 +246,16 @@ namespace _3DGraphics {
         }
 
         private void AddPoints(Viewport3D viewport3D, List<Point3D> points) {
-            var points2 = new Point3DCollection();
-            var indicies2 = new Int32Collection();
-            var index = 0;
-            points.ForEach(point => {
-                new List<Point3D>() {
-                    new Point3D(point.X + OctaHedronRadius, point.Y, point.Z),
-                    new Point3D(point.X, point.Y + OctaHedronRadius, point.Z),
-                    new Point3D(point.X, point.Y, point.Z + OctaHedronRadius),
-                    new Point3D(point.X, point.Y - OctaHedronRadius, point.Z),
-                    new Point3D(point.X, point.Y, point.Z - OctaHedronRadius),
-                    new Point3D(point.X - OctaHedronRadius, point.Y, point.Z),
-                }.ForEach(point2 => points2.Add(point2));
-                _octahedronIndices.ForEach(pos => indicies2.Add(pos + index * 6));
-                ++index;
-            });
+            var materials = new List<Material>() {
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0x00, 0x00))),
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0xff, 0x00))),
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0xff, 0x00))),
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0xff, 0xff))),
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0x00, 0xff))),
+                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0x00, 0xff))),
+            };
             viewport3D.Children.Add(new ModelVisual3D() {
-                Content = new GeometryModel3D() {
-                    Geometry = new MeshGeometry3D() {
-                        Positions = points2,
-                        TriangleIndices = indicies2,
-                    },
-                    Material = new DiffuseMaterial(Brushes.Red),
-                },
+                Content = points.ToOctaHedrons(materials, 1, new TranslateTransform3D(-50, 0, 0)),
             });
         }
 
