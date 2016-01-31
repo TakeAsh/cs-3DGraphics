@@ -247,12 +247,12 @@ namespace _3DGraphics {
 
         private void AddPoints(Viewport3D viewport3D, List<Point3D> points) {
             var materials = new List<Material>() {
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0x00, 0x00))),
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0xff, 0x00))),
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0xff, 0x00))),
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0xff, 0xff))),
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0x00, 0x00, 0xff))),
-                new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0xff, 0xff, 0x00, 0xff))),
+                Color.FromArgb(0xff, 0xff, 0x00, 0x00).ToMaterial(),
+                Color.FromArgb(0xff, 0xff, 0xff, 0x00).ToMaterial(),
+                Color.FromArgb(0xff, 0x00, 0xff, 0x00).ToMaterial(),
+                Color.FromArgb(0xff, 0x00, 0xff, 0xff).ToMaterial(),
+                Color.FromArgb(0xff, 0x00, 0x00, 0xff).ToMaterial(),
+                Color.FromArgb(0xff, 0xff, 0x00, 0xff).ToMaterial(),
             };
             viewport3D.Children.Add(new ModelVisual3D() {
                 Content = points.ToOctaHedrons(materials, 1, new TranslateTransform3D(-50, 0, 0)),
