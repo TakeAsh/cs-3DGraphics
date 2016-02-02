@@ -197,7 +197,7 @@ namespace _3DGraphics {
         }
 
         private ModelVisual3D MakeAxisLabel(string label, IEnumerable<Point3D> positions) {
-            var label_Axis = new DiffuseMaterial(new VisualBrush(new TextBlock() { Text = label }));
+            var label_Axis = new VisualBrush(new TextBlock() { Text = label }).ToMaterial();
             return new ModelVisual3D() {
                 Content = new GeometryModel3D() {
                     Material = label_Axis,
@@ -289,7 +289,7 @@ namespace _3DGraphics {
                         Positions = points,
                         TriangleIndices = indicies,
                     },
-                    Material = new DiffuseMaterial(new SolidColorBrush(Color.FromArgb(0x7f, 0xff, 0x00, 0x00))),
+                    Material = Color.FromArgb(0x7f, 0xff, 0x00, 0x00).ToMaterial(),
                 },
             });
         }
