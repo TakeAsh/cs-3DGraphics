@@ -115,6 +115,7 @@ namespace _3DGraphics {
             
             AddAxes(viewport_Gradient);
             AddTicks(viewport_Gradient);
+            PrepareGradient(viewport_Gradient);
 
             AddPoints(viewport_Points, _sphericalPoints);
             var pns = String.Join("\n", _sphericalPoints.Select(point => new PN(point.X, point.Y, point.Z)));
@@ -297,6 +298,36 @@ namespace _3DGraphics {
                     Material = Color.FromArgb(0x7f, 0xff, 0x00, 0x00).ToMaterial(),
                 },
             });
+        }
+
+        private void PrepareGradient(Viewport3D viewport3D) {
+            var angleA = new Point3D(0, 80, 20);
+            var angleB = new Point3D(0, 80, 80);
+            var angleC = new Point3D(0, 20, 20);
+            var angleD = new Point3D(0, 20, 80);
+            var sideDE = new[]{
+                new Point3D(5, 20, 70),
+                new Point3D(5, 20, 60),
+                new Point3D(0, 20, 50),
+                new Point3D(-5, 20, 40),
+                new Point3D(-5, 20, 30),
+                new Point3D(0, 20, 20),
+            };
+            var sideDF = new[]{
+                new Point3D(-5, 30, 80),
+                new Point3D(-5, 40, 80),
+                new Point3D(0, 50, 80),
+                new Point3D(5, 60, 80),
+                new Point3D(5, 70, 80),
+                new Point3D(0, 80, 80),
+            };
+            var material1 = (TryFindResource("texture_BkYR") as Brush).ToMaterial();
+            var material2 = (TryFindResource("texture_WRY") as Brush).ToMaterial();
+            var visual = new[] {
+                Triangle3D.Create(angleA, angleB, angleC, material1),
+                Triangle3D.Create(angleD, sideDE, sideDF, material2),
+            }.ToModelVisual3D();
+            viewport3D.Children.Add(visual);
         }
 
         #region Event Handlers
