@@ -323,11 +323,37 @@ namespace _3DGraphics {
             };
             var material1 = (TryFindResource("texture_BkYR") as Brush).ToMaterial();
             var material2 = (TryFindResource("texture_WRY") as Brush).ToMaterial();
+            var material3 = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Spiral.png")))
+                .ToMaterial();
             var visual = new[] {
                 Triangle3D.Create(angleA, angleB, angleC, material1),
                 Triangle3D.Create(angleD, sideDE, sideDF, material2),
+                Surface3D.Create(PrepareSurface(), material3),
             }.ToModelVisual3D();
             viewport3D.Children.Add(visual);
+        }
+
+        private List<List<Point3D>> PrepareSurface() {
+            var uDiv = 16;
+            var vDiv = 16;
+            var p00 = new Point3D(0, 20, -30);
+            var p01 = new Point3D(20, 30, -100);
+            var p10 = new Point3D(10, 90, -20);
+            var p11 = new Point3D(30, 100, -90);
+            var A = 5;
+            var interpolaterStart = Point3DHelper.MakeInterpolater(p00, p10, vDiv);
+            var interpolaterEnd = Point3DHelper.MakeInterpolater(p01, p11, vDiv);
+            var points = Enumerable.Range(0, vDiv).Select(v => {
+                var interpolaterStride = Point3DHelper.MakeInterpolater(interpolaterStart(v), interpolaterEnd(v), uDiv);
+                return Enumerable.Range(0, uDiv).Select(u => {
+                    var point = interpolaterStride(u);
+                    point.X += A *
+                        Math.Sin((double)u / (uDiv - 1) * Math.PI * 4) *
+                        Math.Cos((double)v / (vDiv - 1) * Math.PI * 4);
+                    return point;
+                }).ToList();
+            }).ToList();
+            return points;
         }
 
         #region Event Handlers
