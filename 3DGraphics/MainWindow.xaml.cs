@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -74,6 +75,8 @@ namespace _3DGraphics {
         private static readonly Regex _regVertex = new Regex(@"^Vertex\s+\d+\s+(?<x>[-0-9\.]+)\s+(?<y>[-0-9\.]+)\s+(?<z>[-0-9\.]+)");
         private static readonly Regex _regFace = new Regex(@"^Face\s+\d+\s+(?<p0>[0-9]+)\s+(?<p1>[0-9]+)\s+(?<p2>[0-9]+)");
 
+        private static Properties.Settings _settings = Properties.Settings.Default;
+
         struct PN {
             public double PX;
             public double PY;
@@ -104,6 +107,8 @@ namespace _3DGraphics {
                 });
             }
         }
+
+        private WindowPlacement _placement;
 
         public MainWindow() {
             InitializeComponent();
@@ -295,6 +300,21 @@ namespace _3DGraphics {
         }
 
         #region Event Handlers
+
+        protected override void OnSourceInitialized(EventArgs e) {
+            base.OnSourceInitialized(e);
+            _placement = new WindowPlacement(this) {
+                Placement = _settings.WindowPlacement,
+            };
+        }
+
+        protected override void OnClosing(CancelEventArgs e) {
+            base.OnClosing(e);
+            if (!e.Cancel) {
+                _settings.WindowPlacement = _placement.Placement;
+                _settings.Save();
+            }
+        }
 
         private void button_Camera_Click(object sender, RoutedEventArgs e) {
             var button = sender as Button;
