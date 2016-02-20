@@ -6,7 +6,7 @@
     xmlns:tools="clr-namespace:_3DTools;assembly=3DTools"
     xmlns:wu="clr-namespace:WpfUtility;assembly=WpfUtility"
     Title="3D Graphics sample"
-    Height="350" Width="525">
+    Width="640" Height="480" MinWidth="480" MinHeight="360">
 
     <Window.Resources>
         <AmbientLight
