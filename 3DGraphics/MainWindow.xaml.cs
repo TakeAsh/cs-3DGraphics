@@ -324,8 +324,8 @@ namespace _3DGraphics {
             var material1 = (TryFindResource("texture_BkYR") as Brush).ToMaterial();
             var material2 = (TryFindResource("texture_WRY") as Brush).ToMaterial();
             var visual = new[] {
-                Triangle3D.Create(angleA, angleB, angleC, material1),
-                Triangle3D.Create(angleD, sideDE, sideDF, material2),
+                Triangle3D.Create(angleA, angleB, angleC, material1, true),
+                Triangle3D.Create(angleD, sideDE, sideDF, material2, true),
             }.ToModelVisual3D();
             viewport3D.Children.Add(visual);
         }
