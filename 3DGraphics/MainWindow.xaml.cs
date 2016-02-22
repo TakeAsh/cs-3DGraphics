@@ -326,8 +326,8 @@ namespace _3DGraphics {
             var material3 = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Spiral.png")))
                 .ToMaterial();
             var visual = new[] {
-                Triangle3D.Create(angleA, angleB, angleC, material1),
-                Triangle3D.Create(angleD, sideDE, sideDF, material2),
+                Triangle3D.Create(angleA, angleB, angleC, material1, true),
+                Triangle3D.Create(angleD, sideDE, sideDF, material2, true),
                 Surface3D.Create(PrepareSurface(), material3),
             }.ToModelVisual3D();
             viewport3D.Children.Add(visual);
