@@ -328,7 +328,7 @@ namespace _3DGraphics {
             var visual = new[] {
                 Triangle3D.Create(angleA, angleB, angleC, material1, true),
                 Triangle3D.Create(angleD, sideDE, sideDF, material2, true),
-                Surface3D.Create(PrepareSurface(), material3),
+                Surface3D.Create(PrepareSurface(), material3, true),
             }.ToModelVisual3D();
             viewport3D.Children.Add(visual);
         }
