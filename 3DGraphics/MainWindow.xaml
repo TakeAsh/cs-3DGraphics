@@ -160,46 +160,68 @@
         <TabItem
             Header="Gradient">
             <DockPanel>
-                <GroupBox
-                    Header="Camera"
-                    DockPanel.Dock="Right"
-                    VerticalAlignment="Top">
-                    <StackPanel
-                        Orientation="Vertical">
-                        <Button
-                            x:Name="button_Gradient_XpYpZp"
-                            Content="+X +Y +Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XpYmZp"
-                            Content="+X -Y +Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XpYmZm"
-                            Content="+X -Y -Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XpYpZm"
-                            Content="+X +Y -Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XmYpZp"
-                            Content="-X +Y +Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XmYmZp"
-                            Content="-X -Y +Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XmYmZm"
-                            Content="-X -Y -Z"
-                            Click="button_Camera_Click" />
-                        <Button
-                            x:Name="button_Gradient_XmYpZm"
-                            Content="-X +Y -Z"
-                            Click="button_Camera_Click" />
-                    </StackPanel>
-                </GroupBox>
+                <DockPanel
+                    DockPanel.Dock="Right">
+                    <GroupBox
+                        Header="Camera"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top">
+                        <DockPanel>
+                            <Button
+                                x:Name="button_Gradient_XpYpZp"
+                                Content="+X +Y +Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XpYmZp"
+                                Content="+X -Y +Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XpYmZm"
+                                Content="+X -Y -Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XpYpZm"
+                                Content="+X +Y -Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XmYpZp"
+                                Content="-X +Y +Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XmYmZp"
+                                Content="-X -Y +Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XmYmZm"
+                                Content="-X -Y -Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                            <Button
+                                x:Name="button_Gradient_XmYpZm"
+                                Content="-X +Y -Z"
+                                DockPanel.Dock="Top"
+                                Click="button_Camera_Click" />
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox
+                        Header="Material"
+                        DockPanel.Dock="Top"
+                        VerticalAlignment="Top">
+                        <DockPanel>
+                            <Button
+                                x:Name="button_RotateMaterial"
+                                Content="Rotate"
+                                DockPanel.Dock="Top"
+                                Click="button_RotateMaterial_Click" />
+                        </DockPanel>
+                    </GroupBox>
+                </DockPanel>
                 <tools:TrackballDecorator>
                     <Viewport3D
                         x:Name="viewport_Gradient">

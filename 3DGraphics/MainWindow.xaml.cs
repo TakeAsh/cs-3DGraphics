@@ -110,6 +110,47 @@ namespace _3DGraphics {
 
         private WindowPlacement _placement;
 
+        private Material[][] _materials1Gradient = new[] {
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Yellow, Colors.Red).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Red, Colors.Yellow).ToMaterial(),
+            },
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Green, Colors.Yellow).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Yellow, Colors.Green).ToMaterial(),
+            },
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Cyan, Colors.Green).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Green, Colors.Cyan).ToMaterial(),
+            },
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Blue, Colors.Cyan).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Cyan, Colors.Blue).ToMaterial(),
+            },
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Magenta, Colors.Blue).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Blue, Colors.Magenta).ToMaterial(),
+            },
+            new[] {
+                GradientTexture.TriangleBrush(Colors.Black, Colors.Red, Colors.Magenta).ToMaterial(),
+                GradientTexture.TriangleBrush(Colors.White, Colors.Magenta, Colors.Red).ToMaterial(),
+            },
+        };
+        private GeometryModel3D[] _models1Gradient;
+        private int _counter1Gradient = 0;
+        private Material[] _materials2Gradient = new[]{
+            new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Spiral.png")))
+                .ToMaterial(),
+            GradientTexture.SquareBrush(Colors.White, Colors.Cyan, Colors.Magenta, Colors.Blue)
+                .ToMaterial(),
+            GradientTexture.SquareBrush(Colors.White, Colors.Magenta, Colors.Yellow, Colors.Red)
+                .ToMaterial(),
+            GradientTexture.SquareBrush(Colors.White, Colors.Yellow, Colors.Cyan, Colors.Green)
+                .ToMaterial(),
+        };
+        private GeometryModel3D _model2Gradient;
+        private int _counter2Gradient = 0;
+
         public MainWindow() {
             InitializeComponent();
             
@@ -321,18 +362,13 @@ namespace _3DGraphics {
                 new Point3D(5, 70, 80),
                 new Point3D(0, 80, 80),
             };
-            var material1 = (TryFindResource("texture_BkYR") as Brush).ToMaterial();
-            var material2 = (TryFindResource("texture_WRY") as Brush).ToMaterial();
-            var material3 = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/Resources/Spiral.png")))
-                .ToMaterial();
-            var material4 = GradientTexture.SquareBrush(Colors.White, Colors.Cyan, Colors.Magenta, Colors.Blue)
-                .ToMaterial();
-            var visual = new[] {
-                Triangle3D.Create(angleA, angleB, angleC, material1, true),
-                Triangle3D.Create(angleD, sideDE, sideDF, material2, true),
-                Surface3D.Create(PrepareSurface(), material4, true),
-            }.ToModelVisual3D();
-            viewport3D.Children.Add(visual);
+            _models1Gradient = new[]{
+                Triangle3D.Create(angleA, angleB, angleC, _materials1Gradient[0][0], true),
+                Triangle3D.Create(angleD, sideDE, sideDF, _materials1Gradient[0][1], true),
+            };
+            viewport3D.Children.Add(_models1Gradient.ToModelVisual3D());
+            _model2Gradient = Surface3D.Create(PrepareSurface(), _materials2Gradient[0], true);
+            viewport3D.Children.Add(_model2Gradient.ToModelVisual3D());
         }
 
         private List<List<Point3D>> PrepareSurface() {
@@ -439,6 +475,13 @@ namespace _3DGraphics {
             }
             viewport_Gradient.Camera = camera;
             viewport_Frame.Camera = camera;
+        }
+
+        private void button_RotateMaterial_Click(object sender, RoutedEventArgs e) {
+            _counter1Gradient = (++_counter1Gradient) % _materials1Gradient.Length;
+            _models1Gradient.ForEach((model, index) => model.Material = _materials1Gradient[_counter1Gradient][index]);
+            _counter2Gradient = (++_counter2Gradient) % _materials2Gradient.Length;
+            _model2Gradient.Material = _materials2Gradient[_counter2Gradient];
         }
 
         #endregion
